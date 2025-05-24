@@ -31,7 +31,11 @@ Their offer: diffie-hellman-group1-sha1
 
 You can resolve this by explicitly specifying compatible key exchange and host key algorithms in your SSH configuration.
 
-Add the following lines to your SSH configuration file (`~/.ssh/config`):
+Add the following lines to your SSH configuration file (`/etc/ssh/ssh_config`):
+
+Host *
+KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+HostkeyAlgorithms ssh-dss,ssh-rsa
 
 Host 123.123.123.123
 KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
@@ -58,3 +62,6 @@ Clone the repo:
 ```bash
 git clone [https://github.com/your-username/ansible_python_for_network_engineers.git](https://github.com/mukherjeesampad3/ansible_python_for_network_engineers.git)
 cd ansible_python_for_network_engineers
+
+## 🧑‍💻 Author
+https://www.linkedin.com/in/sampad-mukherjee-653427115/
