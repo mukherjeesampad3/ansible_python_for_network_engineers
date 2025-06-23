@@ -1,3 +1,111 @@
+### Basic Level Networking Programs
+
+```bash
+import subprocess
+
+def ping(host):
+    try:
+        output = subprocess.check_output(["ping", "-c", "4", host])
+        print(output.decode())
+    except subprocess.CalledProcessError:
+        print(f"Failed to ping {host}")
+
+if __name__ == "__main__":
+    host = input("Enter host to ping (e.g., google.com): ")
+    ping(host)
+```
+
+```bash
+import ipaddress
+
+def validate_ip(ip_str):
+    try:
+        ip = ipaddress.ip_address(ip_str)
+        print(f"{ip} is a valid IPv{ip.version} address.")
+    except ValueError:
+        print(f"{ip_str} is not a valid IP address.")
+
+if __name__ == "__main__":
+    ip_input = input("Enter an IP address: ")
+    validate_ip(ip_input)
+```
+
+```bash
+import re
+
+def normalize_mac(mac):
+    mac = re.sub(r'[^0-9A-Fa-f]', '', mac).upper()
+    if len(mac) != 12:
+        return None
+    return ":".join(mac[i:i+2] for i in range(0, 12, 2))
+
+if __name__ == "__main__":
+    mac_input = input("Enter a MAC address: ")
+    normalized = normalize_mac(mac_input)
+    if normalized:
+        print(f"Normalized MAC: {normalized}")
+    else:
+        print("Invalid MAC address.")
+```
+```bash
+import socket
+
+def resolve_hostname(hostname):
+    try:
+        ip = socket.gethostbyname(hostname)
+        print(f"{hostname} resolves to {ip}")
+    except socket.gaierror:
+        print(f"Failed to resolve {hostname}")
+
+if __name__ == "__main__":
+    domain = input("Enter a domain name (e.g., google.com): ")
+    resolve_hostname(domain)
+```
+
+### Socket Command
+'''
+🔧 socket.socket(...)
+This is how you create a new socket object. Think of a socket as a “virtual wire” for sending/receiving data between two machines on a network.
+
+📡 socket.AF_INET
+This tells Python you want to use IPv4 addresses (like 192.168.1.1).
+
+AF_INET = Address Family: IPv4
+
+(If you wanted IPv6, you would use AF_INET6.)
+
+📬 socket.SOCK_STREAM
+This specifies the type of socket — in this case, a stream socket, which is used for TCP connections.
+
+SOCK_STREAM = TCP
+
+(For UDP, you’d use SOCK_DGRAM instead.)
+'''
+
+```bash
+import socket
+
+def scan_ports(host, ports):
+    print(f"Scanning {host}...")
+    for port in ports:
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.settimeout(0.5)
+                result = s.connect_ex((host, port))
+                if result == 0:
+                    print(f"Port {port} is open.")
+        except socket.error:
+            print(f"Couldn't connect to {host}")
+            break
+
+if __name__ == "__main__":
+    target = input("Enter IP or hostname: ")
+    common_ports = [21, 22, 23, 25, 53, 80, 110, 143, 443]
+    scan_ports(target, common_ports)
+```
+
+
+
 # IP and MAC Address Parser
 
 This repository contains two Python scripts designed for processing and analyzing IP and MAC addresses from input text files:
