@@ -61,9 +61,9 @@ if __name__ == "__main__":
     domain = input("Enter a domain name (e.g., google.com): ")
     resolve_hostname(domain)
 ```
-
+>
 ### Socket Command
-'''
+
 🔧 socket.socket(...)
 This is how you create a new socket object. Think of a socket as a “virtual wire” for sending/receiving data between two machines on a network.
 
@@ -80,7 +80,6 @@ This specifies the type of socket — in this case, a stream socket, which is us
 SOCK_STREAM = TCP
 
 (For UDP, you’d use SOCK_DGRAM instead.)
-'''
 
 ```bash
 import socket
