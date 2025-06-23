@@ -1,3 +1,5 @@
+> Author: **`Sampad Mukherjee`**
+
 ### Basic Level Networking Programs
 #### Pinging a Host
 ```bash
@@ -63,18 +65,22 @@ if __name__ == "__main__":
     resolve_hostname(domain)
 ```
 
-### Socket Command
+## 📘 Socket Command
 
->🔧 socket.socket(...)
->This is how you create a new socket object. Think of a socket as a “virtual wire” for sending/receiving data between two machines on a network.
->📡 socket.AF_INET
->This tells Python you want to use IPv4 addresses (like 192.168.1.1).
->AF_INET = Address Family: IPv4
->(If you wanted IPv6, you would use AF_INET6.)
->📬 socket.SOCK_STREAM
->This specifies the type of socket — in this case, a stream socket, which is used for TCP connections.
->SOCK_STREAM = TCP
->(For UDP, you’d use SOCK_DGRAM instead.)
+> 🔧 **`socket.socket(...)`**  
+> This is how you create a new socket object.  
+> Think of a socket as a “virtual wire” for sending/receiving data between two machines on a network.  
+>  
+> 📡 **`socket.AF_INET`**  
+> This tells Python you want to use **IPv4 addresses** (like `192.168.1.1`).  
+> `AF_INET` = Address Family: IPv4  
+> *(If you wanted IPv6, you would use `AF_INET6`.)*  
+>  
+> 📬 **`socket.SOCK_STREAM`**  
+> This specifies the type of socket — in this case, a **stream socket**, which is used for **TCP connections**.  
+> `SOCK_STREAM` = TCP  
+> *(For UDP, you’d use `SOCK_DGRAM` instead.)*
+
 
 ```bash
 import socket
